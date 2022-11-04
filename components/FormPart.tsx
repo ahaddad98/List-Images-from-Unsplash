@@ -5,6 +5,9 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 const Formsttyle = styled.div`
     width: 400px;
+    @media screen  and (max-width: 400px) {
+        width: 300px;
+    }
     .title{
         font-family: 'Poppins';
         font-style: normal;
@@ -76,7 +79,7 @@ const Formsttyle = styled.div`
         width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        /* align-items: center; */
         gap: .5rem;
         .signbotton{
             color: #141519;
@@ -152,7 +155,22 @@ const FormPart = () => {
                     </Button>
                 </Form.Item>
                 <div className="signup">
-                    Don't have an account? <span className="signbotton">Sign up for free</span>
+                    Don't have an account?
+                    <div className="signbotton">
+                        <div style={{marginLeft: '1rem'}}>
+                            Sign up for free
+                        </div>
+                        <svg style={{marginRight: '1rem'}} width="124" height="8" viewBox="0 0 134 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_660_2850)">
+                                <path d="M0 7.29999C7.63 4.07999 16.36 3.31999 24.52 2.25999C60.6 -1.31001 96.94 0.0899889 133.1 1.46999C134.19 1.50999 134.35 3.27999 133.03 3.29999C116.77 2.78999 100.46 3.04999 84.2 3.66999C76.07 3.96999 67.95 4.56999 59.84 5.21999C51.73 5.89999 43.64 6.87999 35.56 7.97999L35.53 7.77999C67.61 1.58999 100.49 0.129989 133.1 1.46999L133.01 3.29999L116.33 2.42999C85.78 1.14999 55.08 0.209989 24.57 2.80999C16.41 3.74999 7.77 4.37999 0.1 7.46999L0 7.29999Z" fill="#231F20" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_660_2850">
+                                    <rect width="133.97" height="7.99" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
                 </div>
             </Form>
         </div>

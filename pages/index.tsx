@@ -106,7 +106,7 @@ const FormStyle = styled.div`
   justify-content: center;
   @media screen  and (max-width: 900px) {
     width: 100%;
-}
+  }
 `
 
 const SwitchBotton = styled.div`
@@ -133,15 +133,26 @@ const Secondepartright = styled.div`
   
 `
 
+const Global = styled.div`
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem 2.5rem 1rem 2.5rem;
+  border-collapse: separate;
+  border-radius: 8px;
+  background: #E6E7EC;
+  @media screen  and (max-width: 515px) {
+    padding: 1rem .5rem 1rem .5rem;
+  }
+`
+
 export default function Home() {
   return (
-    <div style={{width: '100vw', height: '100vh', padding: '1rem 2.5rem 1rem 2.5rem',borderCollapse: 'separate' , borderRadius: '8px', background : '#E6E7EC'}}>
+    <Global>
       <Gloabalcontent>
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'></link>
         <FormStyle>
           <FormPart />
         </FormStyle>
-        {/* <Img> */}
         <Img>
           <div className='subdiv'>
             <div className='blur'>
@@ -180,8 +191,7 @@ export default function Home() {
             </div>
           </div>
         </Img>
-        {/* </Img> */}
       </Gloabalcontent>
-    </div>
+    </Global>
   )
 }
