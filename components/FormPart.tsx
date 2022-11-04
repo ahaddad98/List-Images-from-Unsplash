@@ -28,10 +28,12 @@ const Formsttyle = styled.div`
         border: 1.06461px solid #c4c4c4;
         border-radius: 6.38763px;
     }
-    ant-row {
+    .ant-row {
+        display: flex;
+        flex-flow: row wrap;
+        min-width: 0;
         flex-direction: column;
-        align-items: start;
-        width: 100%;
+        align-items: flex-start;
     }
     .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
         display: none;
@@ -55,6 +57,37 @@ const Formsttyle = styled.div`
         line-height: 20px;
         color: #141519;
         cursor: pointer;
+    }
+    .login{
+        width: 100%;
+        .login-form-button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: .5rem;
+            width: 100%;
+            height: 50px;
+            background-color: #111629;
+            border: 0px solid #c4c4c4;
+            border-radius: 6.38763px;
+        }
+    }
+    .signup{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+        .signbotton{
+            color: #141519;
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 600;
+            /* font-size: 14px; */
+            line-height: 20px;
+            color: #141519;
+            cursor: pointer;
+        }
     }
 `
 
@@ -90,7 +123,7 @@ const FormPart = () => {
                 <Form.Item
                     label='Password'
                     name="password"
-                    rules={[{ required: true, message: 'Enter your email' }]}
+                    rules={[{ required: true, message: 'Enter your Password' }]}
                 >
                     <Input
                         type="password"
@@ -107,11 +140,20 @@ const FormPart = () => {
                         Forgot password
                     </div>
                 </Form.Item>
-                <Form.Item>
+                <Form.Item className="login">
                     <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
+                        Sign in
                     </Button>
                 </Form.Item>
+                <Form.Item className="login" >
+                    <Button type="primary" htmlType="submit" className="login-form-button" style={{ background: '#ffff', border: '1.06461px solid #c4c4c4', color: 'black' }} >
+                        <img src="/google.svg" width={25} height={25} alt="" />
+                        Sign in with google
+                    </Button>
+                </Form.Item>
+                <div className="signup">
+                    Don't have an account? <span className="signbotton">Sign up for free</span>
+                </div>
             </Form>
         </div>
     </Formsttyle>

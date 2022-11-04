@@ -17,6 +17,9 @@ const Gloabalcontent = styled.div`
 `
 
 const Img = styled.div`
+    @media screen  and (max-width: 900px) {
+        display: none;
+    }
     position: relative;
     height: 100%;
     width: 50%;
@@ -101,6 +104,9 @@ const FormStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media screen  and (max-width: 900px) {
+    width: 100%;
+}
 `
 
 const SwitchBotton = styled.div`
