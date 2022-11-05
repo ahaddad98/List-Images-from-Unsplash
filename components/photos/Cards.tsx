@@ -1,18 +1,19 @@
 import React from "react";
-import { Card } from 'antd';
+import { Card, Image } from 'antd';
 import styled from "styled-components";
+import CardElement from "./cardElemet";
 
 const Globalcontent = styled.div`
     /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    border-radius: 8px;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
     .ant-card-body {
         padding: 0px;
-        border-radius: 8px;
+        border-radius: 10px;
     }
     .ant-card-bordered {
         border: 0px solid #f0f0f0;
@@ -24,320 +25,25 @@ const Globalcontent = styled.div`
         align-items: center;
         justify-content: space-between;
     }
+    .image{
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    .ant-image-mask{
+        border-radius: 10px;
+    }
 `
 
-const Cards = () => {
+const Cards = ({ data }: any) => {
     const { Meta } = Card;
     return <Globalcontent>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-        <Card
-            hoverable
-            style={{ width: 300}}
-        >
-            <img alt="example" width={'100%'} height={'240px'} src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
-            <div className="footercard">
-                <div>
-                    name
-                </div>
-                <div>
-                    like
-                </div>
-            </div>
-        </Card>
-
+        {
+            data.map((stat: any, key: any) => {
+                return (
+                    <CardElement data={stat} key={key}/>
+                )
+            })
+        }
     </Globalcontent>
 }
 
