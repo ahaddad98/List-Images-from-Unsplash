@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 
 // Add an entry with key 'a' and value 1
 // Create a database
-const db = new Level('./db', { valueEncoding: 'json' })
+export const db = new Level('./db', { valueEncoding: 'json' })
 const createuser = async () => {
   const user1 = {
     username: 'muser1',
@@ -32,6 +32,7 @@ const createuser = async () => {
   const getuser = async () => {
     const value = await db.get('muser1');
     console.log(value);
+    return JSON.parse(value);
   }
 const Main =  async () => {
   await createuser();
