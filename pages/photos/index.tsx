@@ -1,5 +1,5 @@
 import { Spin } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Cards from "../../components/photos/Cards";
 import Header from "../../components/photos/Header";
@@ -16,27 +16,66 @@ const GlobalContent = styled.div`
 `
 
 const Photos = () => {
-    const [data , setData] = useState<any>()
+    const componentRef = useRef<any>();
+    const effectRun = useRef(false);
+    const [dataphotos, setData] = useState<any>([])
+    const [loading, setLoader] = useState(false)
+    let offset = 1;
     const getImg = async () => {
-        const {data}: any = await getImages(12,12);
-        setData(data);
+        setLoader(true)
+        const { data }: any = await getImages(12, offset);
+        setData((prev: any) => [...prev, ...data]);
+        setLoader(false)
+        offset += 1;
     }
     const getImgfilte = async () => {
-        const {data}: any = await getImagesfiltred(12,12, '');
+        const { data }: any = await getImagesfiltred(12, 12, '');
         console.log(data);
         // setData(data);
     }
-    useEffect(()=>{
-        getImg();
-        getImgfilte();
-    },[])
-    return <GlobalContent>
+    const handleScroll = (event: any) => {
+        if (
+            componentRef.current.offsetHeight + componentRef.current.scrollTop + 1 >
+            componentRef.current.scrollHeight
+        )
+        {
+            getImg();
+        }
+        console.log('samir sahbi');
+        
+    };
+    useEffect(() => {
+        // if (!effectRun.current) {
+            getImg();
+            componentRef.current.addEventListener("scroll", handleScroll);
+            // return () => {
+            //     effectRun.current = true;
+            //     if (componentRef.current)
+            //         componentRef.current.removeEventListener("scroll", handleScroll);
+            // };
+        // }
+        //   if (effectRun.current) {
+        //     // getImg();
+        //     componentRef.current.addEventListener("scroll", handleScroll);
+        //     return () => {
+        //       effectRun.current = true;
+        //       if (componentRef.current)
+        //         componentRef.current.removeEventListener("scroll", handleScroll);
+        //     };
+        //   }
+    }, [])
+    return <GlobalContent ref={componentRef}>
         <Header />
         {
-            data ? 
-            <Cards data={data}/>
-            : 
-            <Spin size="large" style={{marginTop: '5rem'}}/>
+            dataphotos.length > 0 &&
+                <div >
+                    <Cards data={dataphotos}/>
+                </div>
+            
+        }
+        {
+            loading && 
+            <Spin size="large" style={{ margin: '5rem' }} />
         }
     </GlobalContent>
 }

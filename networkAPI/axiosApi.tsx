@@ -12,7 +12,7 @@ const instance = axios.create({
 // });
 
 export const getImages = async (count: number, page: number) => {
-    let photos = await instance.get('/photos/random?client_id='+process.env.NEXT_PUBLIC_CLIENT_ID+'&count=25');
+    let photos = await instance.get('/photos/random?client_id='+process.env.NEXT_PUBLIC_CLIENT_ID+'&count=25&page='+page);
     return photos;
 };
 
