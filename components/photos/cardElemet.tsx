@@ -1,4 +1,4 @@
-import React, { createElement, useState } from "react";
+import React, {  useState } from "react";
 import { Card, Image } from 'antd';
 import styled from "styled-components";
 import { HeartOutlined, EyeOutlined, HeartFilled } from '@ant-design/icons';
@@ -20,11 +20,12 @@ const FooterStyle = styled.div`
 
 const CardElement = ({ data }: any) => {
     const [click, setClick] = useState(false);
+    const [likes, setLikes] = useState(data.likes)
     return <Card
         hoverable
         style={{ width: 310, borderRadius: '10px' }}
     >
-        <Image alt="example" width={'100%'} height={'220px'} className='image' src={data.urls.regular} />
+        <Image alt="example" width={'100%'} height={'220px'} className='image' src={data.urls.thumb} />
         <div className="footercard">
             <FooterStyle>
                 <div>
@@ -38,12 +39,18 @@ const CardElement = ({ data }: any) => {
                 <div className="likepart">
                     {
                         click ?
-                            <HeartFilled onClick={() => setClick(!click)} />
+                            <HeartFilled onClick={() => {
+                                setClick(!click)
+                                setLikes(likes - 1)
+                            }} />
                             :
-                            <HeartOutlined onClick={() => setClick(!click)} />
+                            <HeartOutlined onClick={() => {
+                                setClick(!click)
+                                setLikes(likes + 1)
+                            }} />
                     }
                     <div>
-                        {data.likes}
+                        {likes}
                     </div>
                 </div>
                 <div>

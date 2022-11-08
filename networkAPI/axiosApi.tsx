@@ -12,12 +12,22 @@ const instance = axios.create({
 // });
 
 export const getImages = async (count: number, page: number) => {
-    let photos = await instance.get('/photos/random?client_id='+process.env.NEXT_PUBLIC_CLIENT_ID+'&count=25&page='+page);
-    return photos;
+    try {
+        let photos = await instance.get('/photos/random?client_id=' + process.env.NEXT_PUBLIC_CLIENT_ID + '&count=25&page=' + page);
+        return photos;
+    }
+    catch (e: any) {
+        console.log(e.message); 
+    }
 };
 
 
 export const getImagesfiltred = async (count: number, page: number, query: string) => {
-    let photos = await instance.get('/search/photos?query=dogs&client_id='+process.env.NEXT_PUBLIC_CLIENT_ID);
-    return photos;
+    try {
+        let photos = await instance.get('/search/photos?query=' + query + '&client_id=' + process.env.NEXT_PUBLIC_CLIENT_ID + '&count=25&page=' + page);
+        return photos;
+    }
+    catch (e: any) {
+        console.log(e.message); 
+    }
 };

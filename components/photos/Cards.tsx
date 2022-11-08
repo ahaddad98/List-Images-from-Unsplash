@@ -1,5 +1,4 @@
 import React from "react";
-import { Card, Image } from 'antd';
 import styled from "styled-components";
 import CardElement from "./cardElemet";
 
@@ -35,7 +34,6 @@ const Globalcontent = styled.div`
 `
 
 const Cards = ({ data }: any) => {
-    const { Meta } = Card;
     return <Globalcontent>
         {
             data.map((stat: any, key: any) => {

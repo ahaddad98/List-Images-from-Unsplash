@@ -6,7 +6,7 @@ import Cards from "../../components/photos/Cards";
 import Header from "../../components/photos/Header";
 import { getImages, getImagesfiltred } from "../../networkAPI/axiosApi";
 import { useMyContext } from "../Provider/Provider";
-
+import { Button, Result } from 'antd';
 const GlobalContent = styled.div`
     width: 100vw;
     height: 100vh;
@@ -19,53 +19,84 @@ const GlobalContent = styled.div`
 
 const Photos = () => {
     const componentRef = useRef<any>();
-    const effectRun = useRef(false);
     const [dataphotos, setData] = useState<any>([])
     const [loading, setLoader] = useState(false)
     let offset = 1;
+    const [toSearch, setToSearch] = useState('All')
     const getImg = async () => {
         setLoader(true)
-        const { data }: any = await getImages(12, offset);
-        setData((prev: any) => [...prev, ...data]);
-        setLoader(false)
-        offset += 1;
+        const res: any = await getImages(12, offset);
+        if (res?.data) {
+            setData((prev: any) => [...prev, ...res.data]);
+            setLoader(false)
+            offset += 1;
+        }
+        else {
+            setLoader(false)
+        }
     }
-    const getImgfilte = async () => {
-        const { data }: any = await getImagesfiltred(12, 12, '');
-        console.log(data);
-        // setData(data);
+    const getImgfilter = async () => {
+        setLoader(true)
+        const res: any = await getImagesfiltred(12, 12, toSearch);
+        if (res.data) {
+            setData((prev: any) => [...prev, ...res.data.results]);
+            setLoader(false)
+            offset += 1;
+        }
+        else {
+            setLoader(false)
+        }
     }
     const handleScroll = (event: any) => {
         if (
             componentRef.current.offsetHeight + componentRef.current.scrollTop + 1 >
             componentRef.current.scrollHeight
         ) {
-            getImg();
+            if (toSearch == 'All') {
+                getImg();
+            }
+            else
+                getImgfilter()
         }
 
     };
-    const router  = useRouter()
+    const router = useRouter()
     let context: any = useMyContext()
     useEffect(() => {
         if (!localStorage.getItem('username'))
             router.push('/')
-        else{
-            getImg();
-            componentRef.current.addEventListener("scroll", handleScroll);
+        else {
+            if (toSearch == 'All') {
+                getImg();
+                componentRef.current.addEventListener("scroll", handleScroll);
+            }
+            else {
+                getImgfilter();
+                componentRef.current.addEventListener("scroll", handleScroll);
+            }
         }
-    }, [])
+        // getImgfilter()
+    }, [toSearch])
     return <GlobalContent ref={componentRef}>
-            <Header /> 
+        <Header setToSearch={setToSearch} setData={setData} />
         {
-            dataphotos.length > 0 &&
+            !loading && dataphotos.length > 0 &&
             <div >
                 <Cards data={dataphotos} />
             </div>
-
         }
         {
             loading &&
             <Spin size="large" style={{ margin: '5rem' }} />
+        }
+        {
+            !loading && dataphotos.length == 0 &&
+            <Result
+                status="403"
+                title="403"
+                subTitle="Sorry, you are not authorized to access this page."
+                extra={<Button type="primary">Back Home</Button>}
+            />
         }
     </GlobalContent>
 }

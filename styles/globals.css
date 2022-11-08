@@ -28,3 +28,10 @@ a {
     background: black;
   }
 }
+
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  transition: transform 0.3s;
+}

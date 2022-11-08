@@ -183,7 +183,6 @@ export default function Home() {
                   <SwitchBotton>
                     <Tooltip title="Left">
                       <Button shape="circle" icon={<ArrowLeftOutlined />} className='mybotton' size="large" />
-
                     </Tooltip>
                     <Tooltip title="right">
                       <Button shape="circle" icon={<ArrowRightOutlined />} className='mybotton' size="large" />

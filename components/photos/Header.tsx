@@ -57,12 +57,13 @@ const Headerstyle = styled.div`
     }
 `
 
-const Header = () => {
+const Header = (props: any) => {
     const handleChange = (value: string) => {
         console.log(`selected ${value}`);
     };
     const onChange = (key: string) => {
-        console.log(key);
+        props.setToSearch(key);
+        props.setData([])
     };
     return <Headerstyle>
         <div className="select">
@@ -71,25 +72,7 @@ const Header = () => {
                 style={{ width: 120 }}
                 bordered={false}
                 onChange={handleChange}
-                options={[
-                    // {
-                    //     value: 'jack',
-                    //     label: 'Jack',
-                    // },
-                    // {
-                    //     value: 'lucy',
-                    //     label: 'Lucy',
-                    // },
-                    // {
-                    //     value: 'disabled',
-                    //     disabled: true,
-                    //     label: 'Disabled',
-                    // },
-                    // {
-                    //     value: 'Yiminghe',
-                    //     label: 'yiminghe',
-                    // },
-                ]}
+                options={[]}
             />
         </div>
         <div className="tabs">
@@ -99,47 +82,47 @@ const Header = () => {
                 items={[
                     {
                         label: `All`,
-                        key: '1',
+                        key: 'All',
                         children: ``,
                     },
                     {
                         label: `Animation`,
-                        key: '2',
+                        key: 'Animation',
                         children: ``,
                     },
                     {
                         label: `Branding`,
-                        key: '3',
+                        key: 'Branding',
                         children: ``,
                     },
                     {
                         label: `Illustration`,
-                        key: '4',
+                        key: 'Illustration',
                         children: ``,
                     },
                     {
                         label: `Mobile`,
-                        key: '5',
+                        key: 'Mobile',
                         children: ``,
                     },
                     {
                         label: `Print`,
-                        key: '6',
+                        key: 'Print',
                         children: ``,
                     },
                     {
                         label: `Product design`,
-                        key: '7',
+                        key: 'Product design',
                         children: ``,
                     },
                     {
                         label: `Typography`,
-                        key: '8',
+                        key: 'Typography',
                         children: ``,
                     },
                     {
                         label: `Web Design`,
-                        key: '9',
+                        key: 'Web Design',
                         children: ``,
                     },
                 ]}
