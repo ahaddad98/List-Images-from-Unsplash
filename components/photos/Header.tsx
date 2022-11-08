@@ -62,8 +62,8 @@ const Header = (props: any) => {
         console.log(`selected ${value}`);
     };
     const onChange = (key: string) => {
-        props.setToSearch(key);
         props.setData([])
+        props.setToSearch(key);
     };
     return <Headerstyle>
         <div className="select">

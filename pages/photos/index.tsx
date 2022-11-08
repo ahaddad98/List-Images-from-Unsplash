@@ -25,7 +25,7 @@ const Photos = () => {
     const [toSearch, setToSearch] = useState('All')
     const getImg = async () => {
         setLoader(true)
-        const res: any = await getImages(12, offset);
+        const res: any = await getImages(25, offset);
         if (res?.data) {
             setData((prev: any) => [...prev, ...res.data]);
             setLoader(false)
@@ -37,7 +37,7 @@ const Photos = () => {
     }
     const getImgfilter = async () => {
         setLoader(true)
-        const res: any = await getImagesfiltred(12, 12, toSearch);
+        const res: any = await getImagesfiltred(25, offset, toSearch);
         if (res.data) {
             setData((prev: any) => [...prev, ...res.data.results]);
             setLoader(false)
@@ -48,6 +48,7 @@ const Photos = () => {
         }
     }
     const handleScroll = (event: any) => {
+        event.preventDefault()
         if (
             componentRef.current.offsetHeight + componentRef.current.scrollTop + 1 >
             componentRef.current.scrollHeight
@@ -75,12 +76,11 @@ const Photos = () => {
                 componentRef.current.addEventListener("scroll", handleScroll);
             }
         }
-        // getImgfilter()
     }, [toSearch])
     return <GlobalContent ref={componentRef}>
         <Header setToSearch={setToSearch} setData={setData} />
         {
-            !loading && dataphotos.length > 0 &&
+            dataphotos.length > 0 &&
             <div >
                 <Cards data={dataphotos} />
             </div>
@@ -95,7 +95,6 @@ const Photos = () => {
                 status="403"
                 title="403"
                 subTitle="Sorry, you are not authorized to access this page."
-                extra={<Button type="primary">Back Home</Button>}
             />
         }
     </GlobalContent>
