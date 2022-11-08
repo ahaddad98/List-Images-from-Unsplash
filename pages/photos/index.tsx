@@ -1,9 +1,11 @@
 import { Spin } from "antd";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Cards from "../../components/photos/Cards";
 import Header from "../../components/photos/Header";
 import { getImages, getImagesfiltred } from "../../networkAPI/axiosApi";
+import { useMyContext } from "../Provider/Provider";
 
 const GlobalContent = styled.div`
     width: 100vw;
@@ -37,44 +39,32 @@ const Photos = () => {
         if (
             componentRef.current.offsetHeight + componentRef.current.scrollTop + 1 >
             componentRef.current.scrollHeight
-        )
-        {
+        ) {
             getImg();
         }
-        console.log('samir sahbi');
-        
+
     };
+    const router  = useRouter()
+    let context: any = useMyContext()
     useEffect(() => {
-        // if (!effectRun.current) {
+        if (!localStorage.getItem('username'))
+            router.push('/')
+        else{
             getImg();
             componentRef.current.addEventListener("scroll", handleScroll);
-            // return () => {
-            //     effectRun.current = true;
-            //     if (componentRef.current)
-            //         componentRef.current.removeEventListener("scroll", handleScroll);
-            // };
-        // }
-        //   if (effectRun.current) {
-        //     // getImg();
-        //     componentRef.current.addEventListener("scroll", handleScroll);
-        //     return () => {
-        //       effectRun.current = true;
-        //       if (componentRef.current)
-        //         componentRef.current.removeEventListener("scroll", handleScroll);
-        //     };
-        //   }
+        }
     }, [])
     return <GlobalContent ref={componentRef}>
-        <Header />
+            <Header /> 
         {
             dataphotos.length > 0 &&
-                <div >
-                    <Cards data={dataphotos}/>
-                </div>
-            
+            <div >
+                <Cards data={dataphotos} />
+            </div>
+
         }
         {
-            loading && 
+            loading &&
             <Spin size="large" style={{ margin: '5rem' }} />
         }
     </GlobalContent>

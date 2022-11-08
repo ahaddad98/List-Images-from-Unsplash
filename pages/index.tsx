@@ -5,6 +5,8 @@ import { Rate } from 'antd';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { Button, Tooltip } from 'antd';
 import FormPart from '../components/FormPart';
+import { useMyContext } from './Provider/Provider';
+import { useEffect } from 'react';
 
 const Gloabalcontent = styled.div`
   padding: 0;
@@ -146,12 +148,13 @@ const Global = styled.div`
 `
 
 export default function Home() {
+  let context = useMyContext()
   return (
     <Global>
       <Gloabalcontent>
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'></link>
         <FormStyle>
-          <FormPart />
+          <FormPart context={context}/>
         </FormStyle>
         <Img>
           <div className='subdiv'>
