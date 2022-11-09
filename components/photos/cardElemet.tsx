@@ -16,8 +16,6 @@ const FooterStyle = styled.div`
     }
 `
 
-
-
 const CardElement = ({ data }: any) => {
     const [click, setClick] = useState(false);
     const [likes, setLikes] = useState(data.likes)
@@ -25,7 +23,7 @@ const CardElement = ({ data }: any) => {
         hoverable
         style={{ width: 310, borderRadius: '10px' }}
     >
-        <Image alt="example" width={'100%'} height={'220px'} className='image' src={data.urls.thumb} />
+        <Image alt="example" width={'100%'} height={'220px'} className='image' src={data.urls.regular} />
         <div className="footercard">
             <FooterStyle>
                 <div>
